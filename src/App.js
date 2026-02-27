@@ -26,6 +26,7 @@ function App() {
         <Logo>KØR<span>LAB</span></Logo>
         <NavLinks>
           <a href="#clases">Clases</a>
+          <a href="#horarios">Horarios</a>
           <a href="#costos">Costos</a>
         </NavLinks>
       </Navbar>
@@ -63,7 +64,7 @@ function App() {
 
   {/* ISOMETRÍA */}
   <InfoRow reverse>
-    <InfoImage img="/assets/isometria.pngg" />
+    <InfoImage img="/assets/isometria.png" />
     <InfoText>
       <Tag>Control Total</Tag>
       <h3>Iso<span>metría</span></h3>
