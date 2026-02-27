@@ -24,6 +24,14 @@ const heroImages = [
 
 const days = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
 
+const handleEmailContact = (plan) => {
+  const email = "contacto@korlab.mx"; // Reemplaza con el real
+  const subject = encodeURIComponent(`Interés en Plan ${plan}`);
+  const body = encodeURIComponent("Hola, me interesa inscribirme al plan " + plan + " en KØR LAB.");
+  
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+};
+
 function App() {
   return (
     <>
@@ -206,7 +214,11 @@ function App() {
             <li>Coach personalizado</li>
             <li>Sin inscripciones</li>
           </ul>
-          <MainButton>PROBAR GRATIS</MainButton>
+          <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
+            <MainButton onClick={() => handleEmailContact('class')}>
+            PROBAR GRATIS
+            </MainButton>
+          </a>
         </PriceCard>
 
         {/* KOR PLUS */}
@@ -220,7 +232,11 @@ function App() {
             <li>Incluye Clases de Sábado</li>
             <li>Plan de progresión técnica</li>
           </ul>
-          <MainButton>ELEGIR PLUS</MainButton>
+          <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
+            <MainButton onClick={() => handleEmailContact('PLUS')}>
+            ELEGIR PLUS
+            </MainButton>
+          </a>
         </PriceCard>
 
         {/* KOR SHORT */}
@@ -234,7 +250,11 @@ function App() {
             <li>Incluye Clases de Sábado</li>
             <li>Ideal para complementar</li>
           </ul>
-          <MainButton>ELEGIR SHORT</MainButton>
+          <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
+            <MainButton onClick={() => handleEmailContact('SHORT')}>
+            ELEGIR SHORT
+            </MainButton>
+          </a>
         </PriceCard>
       </PricingGrid>
 
@@ -243,7 +263,9 @@ function App() {
           <h3>¿TRABAJAS EN OFICINA?</h3>
           <p>Pregunta por nuestros planes <strong>BACK TO THE OFFICE</strong>. Deja de ser un espectador detrás del monitor y recupera la fuerza que tu cuerpo perdió en el escritorio.</p>
         </div>
-        <MainButton style={{background: '#000'}}>MÁS INFORMACIÓN</MainButton>
+        <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
+          <MainButton style={{background: '#000'}} onClick={() => handleEmailContact('OFFICE')}>MÁS INFORMACIÓN</MainButton>
+        </a>
       </OfficeBanner>
     </PricingSection>
 
