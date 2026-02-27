@@ -1,8 +1,7 @@
 import React from 'react';
-import { GlobalStyles } from './styles/GlobalStyles'; 
-// Importamos todo de los archivos correctos
+import { GlobalStyles } from './styles/GlobalStyles';
 import { 
-  Navbar, Logo, NavLinks, Subtitle, MainButton, HeroSection, HeroContent, Slide, HeroLogo
+  Navbar, Logo, NavLinks, Subtitle, MainButton, HeroSection, HeroContent, Slide, LogoContainer, MainLogo
 } from './styles/AppStyles';
 
 import { 
@@ -37,10 +36,19 @@ function App() {
       ))}
 
       <HeroContent>
-        <HeroLogo src="/assets/kor_lab.png" alt="KØR LAB Logo" />
+        <LogoContainer>
+          <MainLogo>
+            <div className="kor">
+              K<span className="o-slash">O</span>R
+            </div>
+            <div className="lab">LAB</div>
+          </MainLogo>
+        </LogoContainer>
         
         <Subtitle>Domina tu cuerpo. Forja tu mente.</Subtitle>
-        <MainButton>Empezar Entrenamiento</MainButton>
+        <a href="#costos" style={{ textDecoration: 'none' }}>
+          <MainButton>Empezar Entrenamiento</MainButton>
+        </a>
       </HeroContent>
     </HeroSection>
 
