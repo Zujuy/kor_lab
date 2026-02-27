@@ -6,7 +6,7 @@ const fadeIn = keyframes`
 `;
 
 export const GallerySection = styled.section`
-  padding: 100px 8%;
+  padding: 20px 100px 8%;
   background: #000;
   display: flex;
   flex-direction: column;

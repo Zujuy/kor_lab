@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  padding: 80px 8%;
+  padding: 20px 8%;
   background: ${props => props.theme.colors.background};
 `;
 

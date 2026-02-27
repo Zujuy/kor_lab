@@ -134,6 +134,14 @@ export const Subtitle = styled.p`
   font-weight: 300;
   opacity: 0.8;
   margin-bottom: 40px;
+
+ 
+  @media (max-width: 768px) {
+    text-align: center; 
+    font-weight: 700;
+    letter-spacing: 2px;  
+    font-size: 1rem;
+  }
 `;
 
 export const MainButton = styled.button`

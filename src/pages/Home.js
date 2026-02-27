@@ -240,8 +240,8 @@ function App() {
 
       <OfficeBanner>
         <div>
-          <h3>¿TRABAJAS EN CORPORATIVO?</h3>
-          <p>Pregunta por nuestros planes especiales <strong>BACK TO THE OFFICE</strong>. Elevamos la productividad de tu equipo a través del movimiento.</p>
+          <h3>¿TRABAJAS EN OFICINA?</h3>
+          <p>Pregunta por nuestros planes <strong>BACK TO THE OFFICE</strong>. Deja de ser un espectador detrás del monitor y recupera la fuerza que tu cuerpo perdió en el escritorio.</p>
         </div>
         <MainButton style={{background: '#000'}}>MÁS INFORMACIÓN</MainButton>
       </OfficeBanner>
