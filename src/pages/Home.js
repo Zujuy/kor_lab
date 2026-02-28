@@ -174,11 +174,11 @@ function App() {
           {[ "6:00 A 7:00", "7:00 A 8:00", "8:00 A 9:00" ].map(time => (
             <React.Fragment key={time}>
               <TimeCell>{time}</TimeCell>
-              <ClassCell><span className="class-name">JALE</span><span className="coach-name">ISRAEL</span></ClassCell>
-              <ClassCell><span className="class-name">PIERNA</span><span className="coach-name">ISRAEL</span></ClassCell>
-              <ClassCell><span className="class-name">EMPUJE</span><span className="coach-name">ISRAEL</span></ClassCell>
-              <ClassCell><span className="class-name">PIERNA</span><span className="coach-name">ISRAEL</span></ClassCell>
-              <ClassCell><span className="class-name">ISOMETRÍA</span><span className="coach-name">ISRAEL</span></ClassCell>
+              <ClassCell><span className="class-name">JALE</span><span className="coach-name">ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">PIERNA</span><span className="coach-name">ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">EMPUJE</span><span className="coach-name">ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">PIERNA</span><span className="coach-name">ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">ISOMETRÍA</span><span className="coach-name">ISAEL</span></ClassCell>
               {time === "8:00 A 9:00" ? 
                 <ClassCell><span className="class-name">ANIMAL FLOW</span><span className="coach-name">ALEX</span></ClassCell> : 
                 <ClassCell className="empty" />
