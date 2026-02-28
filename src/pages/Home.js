@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import emailjs from '@emailjs/browser';
 import { GlobalStyles } from '../styles/GlobalStyles'; 
 import { 
   Subtitle, MainButton, HeroSection, HeroContent, Slide, LogoContainer, MainLogo
@@ -19,10 +18,10 @@ import { GallerySection, MasonryGrid, GalleryItem } from '../styles/GalleryStyle
 import { ModalOverlay, ModalContainer, Form, CloseButton } from '../styles/ModalStyles';
 
 const heroImages = [
-  { url: '/assets/img1.jpg', delay: 4 },
-  { url: '/assets/img2.jpg', delay: 8 },
-  { url: '/assets/img3.png', delay: 12 },
-  { url: '/assets/img4.png', delay: 16 },
+  { id: 1, url: '/assets/img1.jpg', delay: 4 },
+  { id: 2, url: '/assets/img2.jpg', delay: 8 },
+  { id: 3, url: '/assets/img3.png', delay: 12 },
+  { id: 4, url: '/assets/img4.png', delay: 16 },
 ];
 
 const days = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
@@ -33,37 +32,45 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('');
   const [email, setEmail] = useState('');
-  const [isSending, setIsSending] = useState(false); // Para el feedback visual
+  const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSending(true);
+  const openModal = (plan) => {
+    setSelectedPlan(plan);
+    setIsModalOpen(true);
+  };
 
-    const templateParams = {
-      user_email: email,
-      plan: selectedPlan,
-    };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSending(true);
 
-    emailjs.send(
-      'YOUR_SERVICE_ID', 
-      'YOUR_TEMPLATE_ID', 
-      templateParams, 
-      'YOUR_PUBLIC_KEY'
-    )
-    .then((response) => {
-      console.log('SUCCESS!', response.status, response.text);
-      alert(`¡Listo! Recibimos tu interés por el plan ${selectedPlan}. Te contactaremos en breve.`);
+  try {
+    const response = await fetch('./send_mail.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        plan: selectedPlan
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.status === 'success') {
+      alert(`¡Perfecto! Hemos recibido tu solicitud para el plan ${selectedPlan}. Te contactaremos pronto.`);
       setIsModalOpen(false);
       setEmail('');
-    })
-    .catch((err) => {
-      console.error('FAILED...', err);
-      alert('Hubo un error al enviar. Por favor, inténtalo de nuevo o contáctanos por Instagram.');
-    })
-    .finally(() => {
-      setIsSending(false);
-    });
-  };
+    } else {
+      throw new Error(result.message);
+    }
+  } catch (error) {
+    console.error("Error enviando el mail:", error);
+    alert("Hubo un problema con el servidor. Por favor, intenta de nuevo más tarde.");
+  } finally {
+    setIsSending(false);
+  }
+};
 
   return (
     <>
@@ -247,7 +254,7 @@ function App() {
             <li>Sin inscripciones</li>
           </ul>
             <MainButton onClick={() => openModal('GRATIS')}>
-            PROBAR GRATIS
+            CLASE GRATIS
             </MainButton>
         </PriceCard>
 
@@ -262,14 +269,14 @@ function App() {
             <Form onSubmit={handleSubmit}>
               <input 
                 type="email" 
-                placeholder="Tu correo de oficina" 
+                placeholder="Tu correo" 
                 required 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSending}
               />
               <MainButton type="submit" disabled={isSending}>
-                {isSending ? 'ENVIANDO...' : 'SOLICITAR INFORMACIÓN'}
+                {isSending ? 'ENVIANDO...' : 'SOLICITAR INFORMACIÓN'} 
               </MainButton>
             </Form>
           </ModalContainer>
