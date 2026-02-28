@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# KØR LAB | Calisthenics & Body Awareness 🦾
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![KØR LAB Logo](/public/assets/kor_lab.png)
 
-## Available Scripts
+## ⚡️ Project Overview
+**KØR LAB** is a high-performance web platform designed for the calisthenics community in Mexico City. The site provides a fluid Single Page Application (SPA) experience for accessing schedules, disciplines, and an exclusive technical routine center.
 
-In the project directory, you can run:
+This project, developed under the **kor_lab** project umbrella, implements a modern architecture that decouples presentation logic from corporate lead management.
 
-### `npm start`
+## 🛠 Tech Stack
+* **Frontend:** React.js (Hooks & Functional Components).
+* **Styling:** Styled Components (CSS-in-JS) for modular and scalable design.
+* **Routing:** React Router v6 for dynamic navigation between the Landing Page and the Routines Center.
+* **Backend/Mailing:** Native PHP integration for SMTP form handling on Hostinger servers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Key Features
+* **Responsive Design:** Custom Media Queries for a seamless mobile experience.
+* **Lead Generation:** Dynamic modal-based customer capture (Plans: SHORT, PLUS, DROP-IN).
+* **Lazy Loading:** Optimized assets, gallery videos, and Hero Section animations.
+* **Hybrid Navigation:** A system combining Smooth Scroll anchors with dynamic routing.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📦 Folder Structure
+```text
+src/
+ ├── components/    # Reusable components (NavBar, Modal)
+ ├── pages/         # Main views (Home, RoutinesPage)
+ ├── styles/        # Styled Components definitions
+ └── assets/        # Media, images, and videos (Video1, Video2, Video3)
+public/
+ └── send_mail.php  # Server-side logic for email dispatch
