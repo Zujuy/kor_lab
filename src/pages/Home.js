@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react'
+import emailjs from '@emailjs/browser';
 import { GlobalStyles } from '../styles/GlobalStyles'; 
 import { 
   Subtitle, MainButton, HeroSection, HeroContent, Slide, LogoContainer, MainLogo
@@ -15,6 +16,8 @@ import {
 
 import { GallerySection, MasonryGrid, GalleryItem } from '../styles/GalleryStyles';
 
+import { ModalOverlay, ModalContainer, Form, CloseButton } from '../styles/ModalStyles';
+
 const heroImages = [
   { url: '/assets/img1.jpg', delay: 4 },
   { url: '/assets/img2.jpg', delay: 8 },
@@ -24,15 +27,44 @@ const heroImages = [
 
 const days = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
 
-const handleEmailContact = (plan) => {
-  const email = "contacto@korlab.mx"; // Reemplaza con el real
-  const subject = encodeURIComponent(`Interés en Plan ${plan}`);
-  const body = encodeURIComponent("Hola, me interesa inscribirme al plan " + plan + " en KØR LAB.");
-  
-  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-};
+
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSending, setIsSending] = useState(false); // Para el feedback visual
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    const templateParams = {
+      user_email: email,
+      plan: selectedPlan,
+    };
+
+    emailjs.send(
+      'YOUR_SERVICE_ID', 
+      'YOUR_TEMPLATE_ID', 
+      templateParams, 
+      'YOUR_PUBLIC_KEY'
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      alert(`¡Listo! Recibimos tu interés por el plan ${selectedPlan}. Te contactaremos en breve.`);
+      setIsModalOpen(false);
+      setEmail('');
+    })
+    .catch((err) => {
+      console.error('FAILED...', err);
+      alert('Hubo un error al enviar. Por favor, inténtalo de nuevo o contáctanos por Instagram.');
+    })
+    .finally(() => {
+      setIsSending(false);
+    });
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -214,12 +246,35 @@ function App() {
             <li>Coach personalizado</li>
             <li>Sin inscripciones</li>
           </ul>
-          <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
-            <MainButton onClick={() => handleEmailContact('class')}>
+            <MainButton onClick={() => openModal('GRATIS')}>
             PROBAR GRATIS
             </MainButton>
-          </a>
         </PriceCard>
+
+        {/* MODAL */}
+      {isModalOpen && (
+        <ModalOverlay onClick={() => setIsModalOpen(false)}>
+          <ModalContainer onClick={e => e.stopPropagation()}>
+            <CloseButton onClick={() => setIsModalOpen(false)}>&times;</CloseButton>
+            <h3>PLAN <span>{selectedPlan}</span></h3>
+            <p>Déjanos tu correo y te enviaremos los detalles para tu inscripción.</p>
+            
+            <Form onSubmit={handleSubmit}>
+              <input 
+                type="email" 
+                placeholder="Tu correo de oficina" 
+                required 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isSending}
+              />
+              <MainButton type="submit" disabled={isSending}>
+                {isSending ? 'ENVIANDO...' : 'SOLICITAR INFORMACIÓN'}
+              </MainButton>
+            </Form>
+          </ModalContainer>
+        </ModalOverlay>
+      )}
 
         {/* KOR PLUS */}
         <PriceCard className="featured">
@@ -232,11 +287,9 @@ function App() {
             <li>Incluye Clases de Sábado</li>
             <li>Plan de progresión técnica</li>
           </ul>
-          <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
-            <MainButton onClick={() => handleEmailContact('PLUS')}>
+            <MainButton onClick={() => openModal('KOR PLUS')}>
             ELEGIR PLUS
             </MainButton>
-          </a>
         </PriceCard>
 
         {/* KOR SHORT */}
@@ -250,11 +303,9 @@ function App() {
             <li>Incluye Clases de Sábado</li>
             <li>Ideal para complementar</li>
           </ul>
-          <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
-            <MainButton onClick={() => handleEmailContact('SHORT')}>
+            <MainButton onClick={() => openModal('KOR SHORT')}>
             ELEGIR SHORT
             </MainButton>
-          </a>
         </PriceCard>
       </PricingGrid>
 
@@ -263,9 +314,7 @@ function App() {
           <h3>¿TRABAJAS EN OFICINA?</h3>
           <p>Pregunta por nuestros planes <strong>BACK TO THE OFFICE</strong>. Deja de ser un espectador detrás del monitor y recupera la fuerza que tu cuerpo perdió en el escritorio.</p>
         </div>
-        <a href="mailto:hola@korlab.mx?subject=Inscripción KØR SHORT" style={{ textDecoration: 'none' }}>
-          <MainButton style={{background: '#000'}} onClick={() => handleEmailContact('OFFICE')}>MÁS INFORMACIÓN</MainButton>
-        </a>
+          <MainButton style={{background: '#000'}} onClick={() => openModal('OFFICE')}>MÁS INFORMACIÓN</MainButton>
       </OfficeBanner>
     </PricingSection>
 
