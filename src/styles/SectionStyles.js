@@ -378,3 +378,32 @@ export const Tag = styled.span`
   display: inline-block;
   margin-bottom: 15px;
 `;
+
+export const PetFriendlySection = styled.div`
+  background: #111;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid #222;
+
+  img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff4d4d;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #888;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+  }
+`;

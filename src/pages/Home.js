@@ -5,7 +5,7 @@ import {
 } from '../styles/AppStyles';
 
 import { 
-  Section, SectionTitle, ScheduleSection, ScheduleContainer, TableTitle, GridTable, HeaderCell, TimeCell, ClassCell, PricingSection, PricingIntro, PricingGrid, PriceCard, OfficeBanner, InfoSection, InfoRow, InfoImage, InfoText, Tag
+  Section, SectionTitle, ScheduleSection, ScheduleContainer, TableTitle, GridTable, HeaderCell, TimeCell, ClassCell, PricingSection, PricingIntro, PricingGrid, PriceCard, OfficeBanner, InfoSection, InfoRow, InfoImage, InfoText, Tag, PetFriendlySection
 } from '../styles/SectionStyles';
 
 import { 
@@ -390,6 +390,15 @@ function App() {
         </GalleryItem>
       </MasonryGrid>
     </GallerySection>
+
+    <PetFriendlySection>
+      <img src="/assets/perrito1.jpeg" alt="Nuestro socio más fiel" />
+      <h3>WE ARE <span>PET FRIENDLY</span></h3>
+      <p>
+        En KØR LAB sabemos que el entrenamiento es mejor en compañía. 
+        Tu mejor amigo es bienvenido a quedarse mientras tú dominas la barra.
+      </p>
+    </PetFriendlySection>
 
     <ContactSection id="contacto">
       <ContactGrid>
