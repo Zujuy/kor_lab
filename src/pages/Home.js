@@ -179,18 +179,13 @@ function App() {
               <ClassCell><span className="class-name">EMPUJE</span><span className="coach-name">ISAEL</span></ClassCell>
               <ClassCell><span className="class-name">PIERNA</span><span className="coach-name">ISAEL</span></ClassCell>
               <ClassCell><span className="class-name">ISOMETRÍA</span><span className="coach-name">ISAEL</span></ClassCell>
-              {time === "8:00 A 9:00" ? 
+              <ClassCell className="empty" />
+              {/*{time === "8:00 A 9:00" ? 
                 <ClassCell><span className="class-name">ANIMAL FLOW</span><span className="coach-name">ALEX</span></ClassCell> : 
                 <ClassCell className="empty" />
-              }
+              }*/}
             </React.Fragment>
           ))}
-
-          {/* 9:00 a 10:00 */}
-          <TimeCell>9:00 A 10:00</TimeCell>
-          <ClassCell className="empty" /><ClassCell className="empty" /><ClassCell className="empty" />
-          <ClassCell className="empty" /><ClassCell className="empty" />
-          <ClassCell><span className="class-name">STRETCH</span><span className="coach-name">ROX</span></ClassCell>
         </GridTable>
       </ScheduleContainer>
 
