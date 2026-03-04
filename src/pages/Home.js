@@ -194,38 +194,43 @@ function App() {
       <ScheduleContainer>
         <GridTable>
           <div />
-          {days.map(day => <HeaderCell key={day}>{day}</HeaderCell>)}
+            {days.map(day => <HeaderCell key={day}>{day}</HeaderCell>)}
 
-          {[ "18:00 A 19:00", "19:00 A 20:00", "20:00 A 21:00" ].map(time => (
-            <React.Fragment key={time}>
-              <TimeCell>{time}</TimeCell>
+            {/* --- FILA 18:00 A 19:00 --- */}
+            <TimeCell>18:00 A 19:00</TimeCell>
+            <ClassCell><span className="class-name">JALE / PIERNA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+            <ClassCell><span className="class-name">PIERNA / JALE</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+            <ClassCell><span className="class-name">EMPUJE / PIERNA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+            <ClassCell><span className="class-name">PIERNA / EMPUJE</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+            <ClassCell><span className="class-name">ISOMETRÍA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+            <ClassCell className="empty" />
+
+            {/* --- FILA 19:00 A 20:00 (AQUÍ CAMBIAMOS EL LUNES) --- */}
+            <TimeCell>19:00 A 20:00</TimeCell>
+              {/* LUNES 7 PM: ANIMAL FLOW */}
               <ClassCell>
-                <span className="class-name">JALE / PIERNA</span>
-                <span className="coach-name">FELIPE + ISAEL</span>
+                <span className="class-name">ANIMAL FLOW</span>
+                <span className="coach-name">ALEX</span>
               </ClassCell>
-              <ClassCell>
-                <span className="class-name">PIERNA / JALE</span>
-                <span className="coach-name">FELIPE + ISAEL</span>
-              </ClassCell>
-              <ClassCell>
-                <span className="class-name">EMPUJE / PIERNA</span>
-                <span className="coach-name">FELIPE + ISAEL</span>
-              </ClassCell>
-              <ClassCell>
-                <span className="class-name">PIERNA / EMPUJE</span>
-                <span className="coach-name">FELIPE + ISAEL</span>
-              </ClassCell>
-              <ClassCell>
-                <span className="class-name">ISOMETRÍA</span>
-                <span className="coach-name">FELIPE + ISAEL</span>
-              </ClassCell>
+            {/* MARTES A VIERNES SIGUEN IGUAL */}
+              <ClassCell><span className="class-name">PIERNA / JALE</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">EMPUJE / PIERNA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">PIERNA / EMPUJE</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">ISOMETRÍA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
               <ClassCell className="empty" />
-            </React.Fragment>
-          ))}
-        </GridTable>
-      </ScheduleContainer>
-    </ScheduleSection>
-</Section>
+
+            {/* --- FILA 20:00 A 21:00 --- */}
+              <TimeCell>20:00 A 21:00</TimeCell>
+              <ClassCell><span className="class-name">JALE / PIERNA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">PIERNA / JALE</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">EMPUJE / PIERNA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">PIERNA / EMPUJE</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell><span className="class-name">ISOMETRÍA</span><span className="coach-name">FELIPE + ISAEL</span></ClassCell>
+              <ClassCell className="empty" />
+          </GridTable>
+        </ScheduleContainer>
+      </ScheduleSection>
+    </Section>
 
 <PricingSection id="costos">
       <PricingIntro>
@@ -369,7 +374,7 @@ function App() {
 
         {/* ITEM 7: FOTO (Vertical) */}
         <GalleryItem>
-          <img src="/assets/galeria5.jpg" alt="Comunidad KOR LAB" />
+          <img src="/assets/galeria5.JPG" alt="Comunidad KOR LAB" />
         </GalleryItem>
 
         {/* ITEM 8: FOTO (Cuadrada) */}
